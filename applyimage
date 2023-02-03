@@ -1,0 +1,20 @@
+python script for photoshop that duplicates an image, opens apply image then applies a subtract blending option. Once that's done, the script should then apply a linear light blending option under the layer properties tab
+
+
+
+import photoshop as ps
+
+# Get the current document
+doc = ps.app.activeDocument
+
+# Create a duplicate layer
+dup_layer = doc.activeLayer.duplicate()
+
+# Open the Apply Image dialog
+apply_image_dialog = ps.app.dialogs.add(ps.ApplyImageOptions)
+apply_image_dialog.show()
+apply_image_dialog.blending = ps.BlendSubtract
+apply_image_dialog.ok()
+
+# Apply a Linear Light blending option under the Layer Properties tab
+dup_layer.blendMode = ps.BlendLinearLight
