@@ -1,0 +1,16 @@
+This is a Python script for Photoshop that takes the current image, creates a duplicate layer, brightens the image by 10%, and applies a layer mask to the duplicated image:
+
+
+
+# Get the current document
+doc = ps.app.activeDocument
+
+# Create a duplicate layer
+dup_layer = doc.activeLayer.duplicate()
+
+# Brighten the image by 10%
+adjustment_layer = ps.LayerAdjustment(BrightnessContrast(brightness=10))
+dup_layer.adjustments.add(adjustment_layer)
+
+# Apply a layer mask to the duplicated layer
+layer_mask = dup_layer.createLayerMask(ps.MaskToSelection)
