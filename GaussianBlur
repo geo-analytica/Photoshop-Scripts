@@ -1,0 +1,20 @@
+Python script in photoshop that applies a gaussian blur of 4 to an image titled "layer 1"
+intended to be used in conjuction with the apply image script from this repository
+import photoshop as ps
+
+# Get the current document
+doc = ps.app.activeDocument
+
+# Get the layer with the title "layer 1"
+layer = None
+for l in doc.layers:
+    if l.name == "layer 1":
+        layer = l
+        break
+
+if layer is not None:
+    # Apply a Gaussian Blur of 4
+    blur_filter = ps.BlurGaussian(4)
+    layer.applyFilter(blur_filter)
+else:
+    print("Layer not found")
